@@ -1,0 +1,67 @@
+<!-- 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<div class="container">
+  <div class="checkbox-inline">
+      <label><input type="checkbox" name="mostarAlta" id="chIDmostarAlta" (click)="mostarAlta()" checked>Mostar Alta</label>
+  </div>
+</div>
+
+<div [hidden]="mostarForm " class="container"  >
+  <label for="nombre">nombre</label>
+  <br>
+  <input type="text" [(ngModel)]="nombre" class="form-control"  name="nombre" id="nombre">
+  <br>
+  <label for="sexo">Seleccione sexo</label>
+  <br>
+  <select [(ngModel)]="sexo"  class="form-control" id="sexo" name="sexo">
+    <option value="masculino">masculino </option>
+    <option value="femenino">femenino </option>
+  </select>
+  <br>
+  <label for="email">email</label>
+  <br>
+  <input type="text" [(ngModel)]="email" class="form-control"  name="email" id="email">
+  <br>
+  <label for="clave">clave</label>
+  <br>
+  <input type="password" [(ngModel)]="clave" class="form-control"  name="clave" id="clave">
+  <br>
+  <label for="fileinput">Foto</label>
+  <br>
+  <input required type="file" class="form-control" id="perfilFile" name="foto">
+  <br>
+  <br>
+  <input type="button" (click)="agregar()" class="btn btn-success" value="Agregar" id="btnAgregar">
+  <br>
+</div>
+
+<div class="container">
+  <h1>
+    Listado de pesonas
+   </h1>
+   <table class="table table-condensed">
+     <thead>
+       <tr>
+         <th>id</th>
+         <th>nombre</th>
+         <th>sexo</th>
+         <th>email</th>
+         <th>clave</th>
+         <th>foto</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr [ngClass]="{'mujer': persona.sexo == 'femenino'}" *ngFor="let persona of listadoDePersonas">
+         <td>{{persona.id}} </td>
+         <td>{{persona.nombre}} </td>
+         <td >{{persona.sexo}} </td>
+         <td>{{persona.email}} </td>
+         <td>{{persona.clave}} </td>
+         <td><img src='http://127.0.0.1:8080/workspace/backendLab4/{{persona.foto}}' width="50px"/> </td>
+       </tr>
+     </tbody>
+   </table>
+</div>
